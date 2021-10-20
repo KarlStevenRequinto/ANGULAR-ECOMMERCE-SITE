@@ -1,0 +1,165 @@
+<section>
+  <div class="main">
+    <!-- START OF 1ST PRODUCT HIGHLIGHT -->
+    <div class="main-advert">
+      <div class="main-advert-vid">
+        <video autoplay muted loop class="main-advert-vid-video">
+          <source
+            src="./../../../assets/videos/hinataVid.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+        <div class="main-advert-vid-text">
+          <button
+            *ngFor="let product of products | slice: 0:1"
+            routerLink="/detail/{{ product.id }}"
+          >
+            VIEW HYUGA HINATA
+          </button>
+        </div>
+      </div>
+      <div class="products">
+        <a
+          *ngFor="let product of products | slice: 0:1"
+          routerLink="/detail/{{ product.id }}"
+        >
+          {{ getProducts() }}
+          <div class="product">
+            <div class="product-thumbnail">
+              <img
+                *ngIf="product.photo"
+                src="{{ product.photo }}"
+                alt="thumbnail"
+                class="product-thumb"
+              />
+              <p *ngIf="!product.photo">No image</p>
+            </div>
+
+            <div class="product-description">
+              <h1 class="product-name">{{ product.name | titlecase }}</h1>
+              <br />
+              <h2>{{ product.price | currency: "PHP":"₱" }}</h2>
+              <star-rating [rating]="product.averageRating"></star-rating>
+              <h4>{{ product.reviews.length }} Reviews</h4>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <!-- END OF 1ST PRODUCT HIGHLIGHT -->
+    <!-- START OF PRODUCT LIST -->
+    <div class="main-products">
+      <div class="main-products-dashboard">
+        <div class="products">
+          <a
+            *ngFor="let product of products | slice: 1:7"
+            routerLink="/detail/{{ product.id }}"
+          >
+            <div class="product">
+              <div class="product-thumbnail">
+                <img
+                  *ngIf="product.photo"
+                  src="{{ product.photo }}"
+                  alt="thumbnail"
+                  class="product-thumb"
+                />
+                <p *ngIf="!product.photo">No image</p>
+              </div>
+
+              <div class="product-description">
+                <h1 class="product-name">{{ product.name | titlecase }}</h1>
+                <br />
+                <h2>{{ product.price | currency: "PHP":"₱" }}</h2>
+                <star-rating [rating]="product.averageRating"></star-rating>
+                <h4>{{ product.reviews.length }} Reviews</h4>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- END OF PRODUCT LIST -->
+    <!-- START OF 2ND PRODUCT HIGHLIGHT -->
+    <div class="main-advert">
+      <div class="products">
+        <a
+          *ngFor="let product of products | slice: 7:8"
+          routerLink="/detail/{{ product.id }}"
+        >
+          <div class="product">
+            <div class="product-thumbnail">
+              <img
+                *ngIf="product.photo"
+                src="{{ product.photo }}"
+                alt="thumbnail"
+                class="product-thumb"
+              />
+              <p *ngIf="!product.photo">No image</p>
+            </div>
+
+            <div class="product-description">
+              <h1 class="product-name">{{ product.name | titlecase }}</h1>
+              <br />
+              <h2>{{ product.price | currency: "PHP":"₱" }}</h2>
+              <star-rating [rating]="product.averageRating"></star-rating>
+              <h4>{{ product.reviews.length }} Reviews</h4>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="main-advert-vid">
+        <video autoplay muted loop class="main-advert-vid-video">
+          <source
+            src="./../../../assets/videos/attackOnTitanVid.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+        <div class="main-advert-vid-text">
+          <button
+            *ngFor="let product of products | slice: 7:8"
+            routerLink="/detail/{{ product.id }}"
+          >
+            VIEW ACKERMAN LEVI
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- END OF 2ND PRODUCT HIGHLIGHT -->
+    <!-- START OF PRODUCT LIST -->
+    <div class="main-products">
+      <div class="main-products-dashboard">
+        <div class="products">
+          =
+          <a
+            *ngFor="let product of products | slice: 8:12"
+            routerLink="/detail/{{ product.id }}"
+          >
+            <div class="product">
+              =
+              <div class="product-thumbnail">
+                <img
+                  *ngIf="product.photo"
+                  src="{{ product.photo }}"
+                  alt="thumbnail"
+                  class="product-thumb"
+                />
+                <p *ngIf="!product.photo">No image</p>
+              </div>
+
+              <div class="product-description">
+                <h1 class="product-name">{{ product.name | titlecase }}</h1>
+                <br />
+                <h2>{{ product.price | currency: "PHP":"₱" }}</h2>
+                <star-rating [rating]="product.averageRating"></star-rating>
+                <h4>{{ product.reviews.length }} Reviews</h4>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- END OF PRODUCT LIST -->
+  </div>
+</section>

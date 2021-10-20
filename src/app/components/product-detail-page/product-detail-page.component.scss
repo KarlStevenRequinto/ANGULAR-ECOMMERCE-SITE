@@ -1,0 +1,99 @@
+@import "./../../../styles.scss";
+
+$image-height: 600px;
+$image-width: 400px;
+$side-padding: 150px;
+
+@mixin product-container() {
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: $side-padding;
+  padding-right: $side-padding;
+}
+
+body {
+  background-color: $base-color;
+}
+
+input {
+  font-size: 1em;
+  padding: 0.5rem;
+}
+
+button {
+  margin-top: 20px;
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.img-container {
+  min-height: fit-content;
+  overflow: hidden;
+  padding: 50px;
+  align-items: center;
+  img {
+    height: 70vh;
+    width: auto;
+    object-fit: cover;
+    float: right;
+  }
+}
+
+.productDetails-container {
+  @include product-container();
+  min-height: fit-content;
+  text-align: justify;
+  color: $text-color;
+}
+
+.reviews-container {
+  display: block;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  text-align: justify;
+}
+
+.addToCart-container {
+  padding-top: 20px;
+}
+
+h1 {
+  text-align: center;
+  padding-bottom: 0.8em;
+  color: $text-color;
+}
+
+.description {
+  padding-top: 30px;
+}
+
+.details {
+  padding: 40px;
+  .productName {
+    padding-top: 25px;
+    font-weight: 800;
+  }
+}
+
+.reviews {
+  border-top: 1px solid $secondary-color;
+  color: $text-color;
+  font-weight: 300;
+  text-align: justify;
+  padding: 1.2rem;
+  padding-top: 1.8rem;
+}
+
+.back {
+  padding: 15px;
+  padding-left: 50px;
+  font-weight: 500;
+  font-size: 150%;
+  color: $primary-color;
+}
+
+p {
+  font-size: $small-font;
+}

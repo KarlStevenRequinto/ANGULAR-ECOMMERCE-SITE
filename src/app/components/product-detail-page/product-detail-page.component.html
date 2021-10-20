@@ -1,0 +1,60 @@
+<body>
+  <!--back navigation-->
+  <div class="back">
+    <a (click)="goBack()"> < Back</a>
+  </div>
+
+  <!--product details main content-->
+  <div class="productDetails-container">
+    <div class="container-fluid">
+      <div class="row">
+        <!--product image-->
+        <div class="col-sm-6 img-container" *ngIf="product">
+          <img src="{{ product.photo }}" class="img-fluid" />
+        </div>
+
+        <!--product details-->
+        <div class="col-sm-6 details">
+          <div *ngIf="product">
+            <h1 class="productName">{{ product.name | uppercase }}</h1>
+            <p>
+              <star-rating [rating]="product.averageRating"></star-rating> ({{
+                product.reviews.length
+              }}
+              reviews)
+            </p>
+            <p>{{ product.price | currency: "PHP":"₱" }}</p>
+            <p>{{ product.description }}</p>
+          </div>
+
+          <!--addutucaatu-->
+          <div class="row addToCart-container">
+            <button
+              class="btn btn-warning w-100"
+              (click)="addcart(product)"
+              type="button"
+              routerLink="/cart"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!--review block-->
+        <div class="row w-100 justify-content-center">
+          <div class="col-sm-7 reviews-container" *ngIf="product">
+            <h1>Ratings & Reviews ({{ product.reviews.length }})</h1>
+            <div *ngIf="product">
+              <div class="reviews" *ngFor="let reviews of product.reviews">
+                <h5 class="center">{{ reviews.userName }}</h5>
+                <star-rating [rating]="product.averageRating"></star-rating>
+                <p style="float: right">{{ reviews.date }}</p>
+                <p>{{ reviews.comment }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

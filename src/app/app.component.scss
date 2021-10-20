@@ -1,0 +1,56 @@
+/* AppComponent's private CSS styles */
+@import "./../styles.scss";
+
+h1 {
+  margin-bottom: 0;
+}
+
+.background {
+  color: $primary-color;
+}
+
+nav {
+	a {
+		padding: 1rem;
+		margin-top: 10px;
+		color: $accent-color;
+		&:hover {
+			color: $accent-color;
+		}
+	}
+	a.active {
+		background-color: black;
+	}
+	img {
+		width: auto;
+		height: 5vh;
+	}
+}
+
+.navbar-custom {
+  background-color: $primary-color;
+}
+
+#footer {
+  margin-top: auto;
+  background-color: $primary-color;
+  font-family: "Lucida Sans";
+  position: static;
+  color: $base-color;
+  height: 60px;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+}
+
+.btn {
+  &:hover {
+    background: $secondary-color;
+    color: #fff;
+  }
+  & img {
+    width: auto;
+    height: 40px;
+  }
+}

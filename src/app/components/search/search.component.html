@@ -1,0 +1,46 @@
+<div class="match">
+  <h1 *ngIf="filteredProducts.length == 1">
+    {{ filteredProducts.length }} match for "{{ searchInput }}"
+  </h1>
+  <h1 *ngIf="filteredProducts.length > 1">
+    {{ filteredProducts.length }} matches for "{{ searchInput }}"
+  </h1>
+  <h1 *ngIf="filteredProducts.length == 0">
+    No matches found for "{{ searchInput }}"
+  </h1>
+</div>
+<!-- LIST OF SEARCH OF RESULTS -->
+<section>
+  <div class="main-products">
+    <div class="main-products-dashboard">
+      <div class="products">
+        <div class="products">
+          <a
+            *ngFor="let product of filteredProducts"
+            routerLink="/detail/{{ product.id }}"
+          >
+            <div class="product">
+              <div class="product-thumbnail">
+                <img
+                  *ngIf="product.photo"
+                  src="{{ product.photo }}"
+                  alt="thumbnail"
+                  class="product-thumb"
+                />
+                <p *ngIf="!product.photo">No image</p>
+              </div>
+
+              <div class="product-description">
+                <h1 class="product-name">{{ product.name | titlecase }}</h1>
+                <br />
+                <h2>{{ product.price | currency: "PHP":"₱" }}</h2>
+                <star-rating [rating]="product.averageRating"></star-rating>
+                <h4>{{ product.reviews.length }} Reviews</h4>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

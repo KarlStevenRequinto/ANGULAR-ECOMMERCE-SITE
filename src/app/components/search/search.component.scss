@@ -1,0 +1,11 @@
+@import "./../../../styles.scss";
+.match h1 {
+  margin: auto;
+  padding: 20px;
+  background: $base-color;
+  color: $secondary-color;
+  text-align: center;
+}
+a {
+  text-decoration: none;
+}

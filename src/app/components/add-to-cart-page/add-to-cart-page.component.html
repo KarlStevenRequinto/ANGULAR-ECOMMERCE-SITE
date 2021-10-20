@@ -1,0 +1,136 @@
+<section>
+<!-- True statement(cart is not empty) -->  
+  <ng-container *ngIf="products.length != 0">
+    <div class="container">
+      <div class="container-cart-table">
+        <div class="container-cart-table-product">
+          <div class="container-cart-table-product-header">
+            <h1>My Cart({{ totalItem }})</h1>
+          </div>
+          <table class="table text-center">
+            <thead class="table-details">
+              <tr class="table-heading">
+                <th>Sr. No</th>
+                <th>Product Name</th>
+                <th>Product Image</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody class="table-details">
+              <tr *ngFor="let item of products; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ item.name }}</td>
+                <td>
+                  <img
+                    class="table-details-productAdded"
+                    src="{{ item.photo }}"
+                    alt="where is it"
+                  />
+                </td>
+                <td>{{ item.price | currency: "PHP":"₱" }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.price * item.quantity | currency: "PHP":"₱" }}</td>
+                <td>
+                  <a
+                    title="Delete"
+                    (click)="open(content, item)"
+                    href="javascript:void(0);"
+                  >
+                    <img
+                      src="../../../assets/images/trash (1).png"
+                      alt="trash icon"
+                    />
+                  </a>
+                </td>
+              </tr>
+              <tr class="table-heading">
+                <td colspan="5"></td>
+                <td>
+                  <strong
+                    >Grand Total :
+                    {{ grandTotal | currency: "PHP":"₱" }}</strong
+                  >
+                </td>
+                <td colspan="1"></td>
+              </tr>
+            </tbody>
+          </table>
+          <button (click)="emptycart()" class="btn btn-danger">
+            Empty Cart
+          </button>
+          <button routerLink="/" class="btn btn-primary">Shop More</button>
+
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Check Out
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </ng-container>
+<!-- False statement(cart is empty) -->
+  <ng-container *ngIf="products.length == 0">
+    <div class="container">
+      <div class="container-center">
+        <img
+          class="container-center-emptycartpic"
+          src="../../../assets/images/emptycart.png"
+          alt="wheres the pic"
+        />
+        <h4>Your cart is empty!</h4>
+        <h6>Add item to it now</h6>
+        <button routerLink="/dashboard" class="btn btn-primary">
+          Shop Now
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</section>
+<!-- removing an item confirmation -->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Remove Item From Cart</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure you want to remove this item from your cart?</p>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="d('Cross click')"
+    >
+      Cancel
+    </button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('yes')">
+      Yes
+    </button>
+  </div>
+</ng-template>
+<!-- Checkout template -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Check Out Successful</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" routerLink='/dashboard'>Go Back to Dashboard</button>
+      </div>
+    </div>
+  </div>
+</div>
